@@ -1,0 +1,27 @@
+# extended from nextpnr
+
+.cache
+cmake-build-*/
+CMakeCache.txt
+*.so
+*.dll
+*.a
+*.cbp
+*.depends
+.*.swp
+a.out
+*.dot
+*.il
+build/
+share/
+*.asc
+*.bin
+/Testing/*
+/bba/bbasm
+*-coverage/
+*-coverage.info
+*.netlist
+*.phys
+*.dcp
+*.bit
+*.ys.json
