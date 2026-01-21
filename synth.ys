@@ -1,0 +1,5 @@
+verilog_defaults -add -I./rtl/include
+
+read_verilog_file_list -F ./files.f
+
+synth_ice40 -top top -json build/project.ys.json
