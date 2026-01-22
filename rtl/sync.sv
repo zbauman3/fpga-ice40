@@ -1,10 +1,10 @@
 module sync (
-    input  wire clk,
-    input  wire rst,
-    input  wire in,
-    output wire out
+    input  logic clk,
+    input  logic rst,
+    input  logic in,
+    output logic out
 );
-  reg [1:0] sync = 2'b00;
+  logic [1:0] sync = 2'b00;
 
   always @(posedge clk or posedge rst) begin
     if (rst) sync <= 2'b00;

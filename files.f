@@ -1,3 +1,4 @@
-rtl/top.sv
-rtl/sync.sv
-rtl/debounce.sv
+./rtl/sync.sv
+./rtl/single_pulse.sv
+./rtl/top.sv
+./rtl/debounce.sv

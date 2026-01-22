@@ -6,7 +6,7 @@
     {
       "label": "Build and Flash",
       "type": "shell",
-      "command": "../src/blinky.sh",
+      "command": "make all",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -15,9 +15,6 @@
         "reveal": "always",
         "panel": "dedicated",
         "clear": true
-      },
-      "options": {
-        "cwd": "./src"
       },
       "problemMatcher": []
     }
