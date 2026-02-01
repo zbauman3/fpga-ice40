@@ -6,7 +6,7 @@ module sync (
 );
   logic [1:0] sync = 2'b00;
 
-  always @(posedge clk or posedge rst) begin
+  always_ff @(posedge clk or posedge rst) begin
     if (rst) sync <= 2'b00;
     else sync <= {sync[0], in};
   end

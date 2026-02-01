@@ -1,5 +1,6 @@
 all: program
 
+# Include location also set in synth.ys
 INCLUDE_FILES := $(shell find ./rtl/include -type f -name '*.vh' -o -name '*.svh')
 RTL_FILES := $(shell cat ./files.f)
 

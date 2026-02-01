@@ -24,7 +24,7 @@ module debounce #(
   logic [$clog2(DebounceCycles)-1:0] cnt = 0;
   logic prev = 1'b0;
 
-  always @(posedge clk or posedge rst) begin
+  always_ff @(posedge clk or posedge rst) begin
     if (rst) begin
       cnt  <= 0;
       prev <= 0;
@@ -44,4 +44,23 @@ module debounce #(
     end
   end
 
+endmodule
+
+module single_pulse (
+    input  logic clk,
+    input  logic rst,
+    input  logic in,
+    output logic out
+);
+  logic in_d;
+
+  always_ff @(posedge clk or posedge rst) begin
+    if (rst) begin
+      in_d <= 1'b0;
+      out  <= 1'b0;
+    end else begin
+      in_d <= in;
+      out  <= in & ~in_d;
+    end
+  end
 endmodule

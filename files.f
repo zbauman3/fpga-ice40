@@ -1,4 +1,6 @@
 ./rtl/sync.sv
-./rtl/single_pulse.sv
+./rtl/segments.sv
 ./rtl/top.sv
+./rtl/button.sv
+./rtl/clock_divier.sv
 ./rtl/debounce.sv

@@ -1,3 +1,4 @@
+# Include location also set in Makefile
 verilog_defaults -add -I./rtl/include
 
 read_verilog_file_list -F ./files.f
