@@ -5,11 +5,9 @@ module debounce #(
     input  logic clk,
     input  logic rst,
     input  logic in,
-    output logic out = 1'b0
+    output logic out = 0
 );
-
-  // Convert ms → cycles
-  localparam integer DebounceCycles = (CLK_HZ / 1000) * DEBOUNCE_MS;
+  localparam integer DEBOUNCE_CYCLES = (CLK_HZ / 1000) * DEBOUNCE_MS;
 
   // Synchronize input to the clock domain
   logic in_s;
@@ -21,8 +19,8 @@ module debounce #(
   );
 
   // Stability counter
-  logic [$clog2(DebounceCycles)-1:0] cnt = 0;
-  logic prev = 1'b0;
+  logic [$clog2(DEBOUNCE_CYCLES)-1:0] cnt = 0;
+  logic prev = 0;
 
   always_ff @(posedge clk or posedge rst) begin
     if (rst) begin
@@ -31,14 +29,14 @@ module debounce #(
       out  <= 0;
     end else begin
       if (in_s != prev) begin
-        // Input changed → restart debounce
+        // Input changed > restart debounce
         prev <= in_s;
         cnt  <= 0;
-      end else if (cnt < DebounceCycles - 1) begin
-        // Input stable → count
+      end else if (cnt < DEBOUNCE_CYCLES - 1) begin
+        // Input stable > count
         cnt <= cnt + 1;
       end else begin
-        // Stable long enough → accept
+        // Stable long enough > accept
         out <= in_s;
       end
     end
@@ -56,8 +54,8 @@ module single_pulse (
 
   always_ff @(posedge clk or posedge rst) begin
     if (rst) begin
-      in_d <= 1'b0;
-      out  <= 1'b0;
+      in_d <= 0;
+      out  <= 0;
     end else begin
       in_d <= in;
       out  <= in & ~in_d;
